@@ -1,0 +1,35 @@
+pipeline {
+    agent any // Define where the pipeline will run
+    stages {
+        stage('pull') { // Define a stage
+            steps {
+                git branch: 'main', url: 'https://github.com/Pramod581/Nodejs-app-deployment-using-jenkins.git'
+            } 
+        }
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+            }
+        }
+    }
+    
+    post { // Post-build actions
+        success {
+            echo 'Pipeline succeeded'
+        }
+        failure {
+            echo 'Pipeline failed'
+        }
+    }
+}
+
